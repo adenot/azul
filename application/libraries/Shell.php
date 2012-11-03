@@ -10,7 +10,7 @@ class Shell {
 	public function setOperation($op)
 	{
 		$this->operation = $op;
-		list($this->log_id, $this->log_file) = Log::create($op);
+		list($this->log_id, $this->log_file) = LogShell::create($op);
 	}
 	
 	public function setCommand($cmd)
