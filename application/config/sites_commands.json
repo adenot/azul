@@ -1,0 +1,6 @@
+{
+	"db-refresh":
+		"drush sql-sync @{site}.{source} @{site}.{destination}",
+	"update":
+		"drush @{site} pull"
+}

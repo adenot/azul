@@ -1,0 +1,44 @@
+<form class="well form-horizontal">
+  <legend>Create Agent</legend>
+  <div class="control-group">
+    <label class="control-label" for="description">Description</label>
+    <div class="controls">
+      <input type="text" id="description" name="description" placeholder="" ng-model="description">
+      <span class="help-inline"></span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="type">Type</label>
+    <div class="controls">
+	    <select id="type" name="type" ng-model="type" ng-change="typeChange()">
+	      <option value="ping">Ping</option>
+	      <option value="tcp">TCP port test</option>
+	      <option value="content">Page content check</option>
+	    </select>
+      <span class="help-inline"></span>
+    </div>
+  </div>
+  <div class="control-group" ng-show="type">
+    <label class="control-label" for="server">Server Address</label>
+    <div class="controls">
+      <div class="input-append">
+        <input type="text" id="server" name="server" placeholder="" ng-model="server">
+        <span class="add-on"><[format]></span>
+      </div>
+      <span class="help-inline"></span>
+      <span class="help-block">E.g.: <[formatex]></span>
+    </div>
+  </div>
+  <div class="control-group" ng-show="showContent">
+    <label class="control-label" for="server">Content</label>
+    <div class="controls">
+      <input type="text" id="content" name="content" placeholder="" ng-model="content">
+      <span class="help-inline"></span>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="button" class="btn btn-primary" ng-click="add()">Save changes</button>
+    </div>
+  </div>
+</form>

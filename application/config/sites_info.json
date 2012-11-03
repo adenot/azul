@@ -1,0 +1,50 @@
+[
+  {
+    "name":"site 1",
+    "key":"site1",
+    "region":{
+      "dev":{
+        "url":"http://site1.local/",
+        "repo":"https://git.local/site1.git",
+		"repo_type":"GIT",
+		"drush_alias":"site1.dev"
+      },
+      "staging":{
+        "url":"http://site1.st/",
+        "repo":"https://git.st/site1.git",
+		"repo_type":"GIT",
+		"drush_alias":"site1.stage"
+      },
+      "prod":{
+        "url":"http://site1.prod/",
+        "repo":"https://git.prod/site1.git",
+		"repo_type":"GIT",
+		"drush_alias":"site1.prod"
+      }
+    }
+  },
+  {
+    "name":"site 2",
+    "key":"site2",
+    "region":{
+      "dev":{
+        "url":"http://site2.local/",
+        "repo":"https://git.local/site2.git",
+		"repo_type":"GIT",
+		"drush_alias":"site2.dev"
+      },
+      "staging":{
+        "url":"http://site2.st/",
+        "repo":"https://git.st/site2.git",
+		"repo_type":"GIT",
+		"drush_alias":"site2.stage"
+      },
+      "prod":{
+        "url":"http://site2.prod/",
+        "repo":"https://git.prod/site2.git",
+		"repo_type":"GIT",
+		"drush_alias":"site2.prod"
+      }
+    }
+  }
+]

@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Server</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-hide="loaded">
+      <td colspan="4">Loading...</td>
+    </tr>
+    <tr ng-show="loaded==true && agents.length==0">
+      <td colspan="4">No agents created</td>
+    </tr>
+    <tr ng-repeat="agent in agents">
+      <td><[agent.description]></td>
+      <td><[agent.type]></td>
+      <td><[agent.server]></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<button type="button" class="btn" ng-click="refresh()">refresh</button>
