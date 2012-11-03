@@ -46,11 +46,11 @@ class Dashboard_Api_Controller extends Base_Controller
 			
 			$cmd = str_replace($tokens, $replace, $cmd);
 			
-			$cmd = new Command();
-			$cmd->setOperation($op);
-			$cmd->setCommand($cmd);
-			$cmd->execute();
-			$log[] = $cmd->getLogId();
+			$sh = new Shell();
+			$sh->setOperation($op);
+			$sh->setCommand($cmd);
+			$sh->execute();
+			$log[] = $sh->getLogId();
 		
 		}
 		
