@@ -1,8 +1,11 @@
 angular.module("siteServices", ["ngResource"]).
   factory('Site', function($resource) {
-    
-    return $resource("/dashboard/api/:action/:region",
+    return $resource("/dashboard/api/:action",
       {action:'site', callback:'JSON_CALLBACK'});
+  }).
+  factory('SiteLog', function($resource) {
+    return $resource("/dashboard/api/log/:id/:offset",
+      {id:'@id', offset:'@offset', callback:'JSON_CALLBACK'});
     
   });
 
@@ -50,23 +53,61 @@ function SiteListCtrl($scope, $rootScope, $location, Site) {
 	$scope.refresh();
 }
 
-function OperationCtrl($scope, $rootScope, Site) {
+function OperationCtrl($scope, $rootScope, $timeout, Site, SiteLog) {
 	$scope.$on('operationAdd', function(event, operation) {
+		$scope.operations = [];
 		$scope.operations.push(operation);
 	});
 	$scope.operations = [];
+	$scope.latest_operations = [];
 
-	$scope.remove = function(operation_index) {
-		$scope.operations.splice(operation_index-1,1);
+	$scope.remove_latest = function(latest_index) {
+		$scope.latest_operations.splice(latest_index-1,1);
 	}
-	$scope.removeAll = function() {
+	$scope.cancel = function() {
 		$scope.operations = [];
 	}
 	
+	$scope.log_id = "";
+	
 	$scope.execute = function() {
-		var SiteLog = new Site();
-		SiteLog.operations = $scope.operations;
-		$scope.log_id = SiteLog.$save({'action':'execute'});
+		var siteOp = new Site();
+		siteOp.operation = $scope.operations[0];
+		siteOp.$save({'action':'execute'}, function(result) {
+			$scope.log_id = result.log_id;
+			$scope.log_content = "";
+			$scope.logTimer = $timeout($scope.readLog, 1000);
+			$scope.latest_operations.push({'log_id': $scope.log_id});
+		});
+		
+		
+	}
+	
+	$scope.readLog = function() {
+		if ($scope.log === undefined) {
+			$scope.log = { 'offset': 0 };
+		}
+
+		$scope.log = SiteLog.get({'id': $scope.log_id, 'offset': $scope.log.offset }, function() {
+			console.log($scope.log);
+			$scope.log_content += $scope.log.content;
+			if ($scope.log.offset >= 0) { 
+				$scope.logTimer = $timeout($scope.readLog, 1000);	
+			}
+		});
+	}
+	
+	$scope.showLog = function(log_id) {
+		console.log("showlog: "+log_id);
+		$scope.log_id = log_id;
+		$scope.log_content = "";
+		$scope.logTimer = $timeout($scope.readLog, 1000);
+	}
+	
+	$scope.stopLog = function() {
+		$timeout.cancel($scope.logTimer);
+		$scope.operations = [];
+		
 	}
 }
 

@@ -122,4 +122,4 @@ Route::controller(array('home', 'user', 'dashboard.home'));
 Route::get('dashboard/api/site/(:any)', 'dashboard.api@site');
 Route::get('dashboard/api/site_list', 'dashboard.api@site_list');
 Route::post('dashboard/api/execute', 'dashboard.api@execute');
-Route::get('dashboard/api/log', 'dashboard.api@log');
+Route::get('dashboard/api/log/(:any)/(:num?)', 'dashboard.api@log');

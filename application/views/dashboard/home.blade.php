@@ -30,8 +30,8 @@
 						<div class="btn-group">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Database<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:void()" ng-click="op('db-refresh', 'stage')">Refresh from Staging</a></li>
-								<li><a href="javascript:void()" ng-click="op('db-refresh', 'prod')">Refresh from Production</a></li>
+								<li><a href="javascript:void(0)" ng-click="op('db-refresh', 'stage')">Refresh from Staging</a></li>
+								<li><a href="javascript:void(0)" ng-click="op('db-refresh', 'prod')">Refresh from Production</a></li>
 							</ul>
 						</div>
 						
