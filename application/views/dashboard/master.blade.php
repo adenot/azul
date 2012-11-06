@@ -7,17 +7,34 @@
   }
 </style>
   <body ng-controller="RouteCtrl">
-    @include('plugins.nav')
+	<div class="navbar navbar-fixed-top navbar-inverse">
+	  <div class="navbar-inner">
+		<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="#">Azul</a>
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+					<li><a href="/dashboard">Console</a></li>
+				</ul>
+
+					<form class="navbar-search pull-right" ng-controller="SiteListCtrl">
+						<select name="site" ng-change="switch()" ng-model="site_selected" ng-options="site.key as site.name for site in sites">
+							<option value="">-- select site--</option>
+						</select>
+					</form>
+
+			</div><!--/.nav-collapse -->
+
+		</div>
+	  </div>
+	</div>
     <div class="container">
         <div class="row">
-			<div class="span4 offset8" ng-controller="SiteListCtrl">
-				<form class="form-inline pull-right">
-					<select name="site" ng-model="site_selected" ng-options="site.key as site.name for site in sites">
-						<option value="">-- select site--</option>
-					</select>
-					<button type="submit" class="btn" ng-click="switch()">Switch Site</button>
-				</form>
-			</div>
+
 		</div>
 		<div class="row">@include('plugins.status')</div>
 		<div ng-controller="OperationCtrl">
