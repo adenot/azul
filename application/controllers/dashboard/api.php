@@ -3,13 +3,13 @@
 class Dashboard_Api_Controller extends Base_Controller
 {
 
-    public $restful = true;
+	public $restful = true;
     
-    function __construct() 
+	function __construct() 
 	{
-      $this->filter('before', 'auth');
-      parent::__construct();
-    }
+		$this->filter('before', 'auth');
+		parent::__construct();
+	}
     
 
 	function get_site($region) 
