@@ -1,4 +1,4 @@
 azul
 ====
 
-A Drupal migration manager
+A Drupal migration manager using Laravel and AngularJS
