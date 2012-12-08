@@ -14,21 +14,13 @@
 			<li><a href="#production" data-toggle="tab">Production</a></li>
 		</ul>
 		<div class="tab-content">
-		
 			<div class="tab-pane active" id="development" ng-controller="SiteDevCtrl">
-
-
 				<h3>Development</h3>
-
-
 				<div class="row-fluid">
-					
 						<div class="span8">
 							<a class="btn pull-right" href="#" ng-click="refresh()"><i class="icon-refresh"></i></a>
 							<button class="btn" ng-click="op('update', site.region.dev.repo)">Update from Repo <i class="icon-download-alt"></i></button>
-							
-							
-							
+							<button class="btn" ng-click="op('info')">Get Information <i class="icon-info-sign"></i></button>
 						</div>
 						<div class="span4">
 							<div class="well">
@@ -46,13 +38,10 @@
 										<button class="btn btn-block" ng-click="op('db-refresh', 'stage')">Staging</button>
 										<button class="btn btn-block" ng-click="op('db-refresh', 'prod')">Production</button>
 									</div>
-								</div>								
+								</div>
 							</div>
 						</div>
 					</div>
-
-				
-				
 			</div>
 
 			<div class="tab-pane " id="staging" ng-controller="SiteStagingCtrl">

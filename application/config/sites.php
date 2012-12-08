@@ -61,8 +61,9 @@ return array(
 	),
 	
 	'commands' => array(
-		'db-refresh' =>	'drush sql-sync @{site}.{source} @{site}.{destination}',
-		'update' => 'drush @{site} pull'
+		'db-refresh' =>	'drush -v -q sql-sync @{site}.{source} @{site}.{destination}',
+		'info' =>	'drush -v -q @{site} info',
+		'update' => 	'drush -v -q @{site} pull'
 	)
 );
 	

@@ -28,7 +28,7 @@ class Dashboard_Api_Controller extends Base_Controller
 	function get_log($id, $offset=0)
 	{
 		// testing:
-		return json_encode(array("content" => "test\n", "offset" => ($offset+5)));
+		//return json_encode(array("content" => "test\n", "offset" => ($offset+5)));
 		
 	
 		return json_encode(LogShell::read($id, $offset));
@@ -47,12 +47,16 @@ class Dashboard_Api_Controller extends Base_Controller
 		
 		$site = $operation->site->key;
 		$op = $operation->op;
-		$source = $operation->source;
+		if (property_exists($operation, "source")) { 
+			$source = $operation->source;
+		} else {
+			$source = "";
+		}
 		$destination = $operation->destination;
 		
 		// testing:
-		list($log_id, $log_file) = LogShell::create($op);
-		return json_encode(array("log_id" => $log_id));
+		//list($log_id, $log_file) = LogShell::create($op);
+		//return json_encode(array("log_id" => $log_id));
 		
 		$cmd = $cmds->$op;
 			
