@@ -12,7 +12,7 @@ class Shell {
 		$this->operation = $op;
 		list($this->log_id, $this->log_file) = LogShell::create($op);
 	}
-	
+
 	public function setCommand($cmd)
 	{
 		$this->command = $cmd;
@@ -20,11 +20,10 @@ class Shell {
 
 	public function execute()
 	{
-		shell_exec("./exec.sh " . $this->log_file . " " . $this->command);
+		echo shell_exec("./exec.sh " . $this->log_file . " " . $this->command);
 	}
-	
+
 	public function getLogId() {
 		return $this->log_id;
 	}
-	
 }

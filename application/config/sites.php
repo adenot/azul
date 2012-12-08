@@ -32,39 +32,34 @@ return array(
 			)
 		)
 	),
-		
+
 	'info' => array(
 		array(
-			'name' => 'site 1',
-			'key' => 'site1',
+			'name' => 'Suncorp Group',
+			'key' => 'sungrp',
 			'region' => array(
 				'dev' => array(
 					'url' => 'http://site1.local/',
 					'repo' => 'https://git.local/site1.git',
-					'repo_type' => 'GIT',
-					'drush_alias' => 'site1.dev'
+					'repo_type' => 'GIT'
 				),
 				'stage' => array(
 					'url' => 'http://site1.st/',
 					'repo' => 'https://git.st/site1.git',
-					'repo_type' => 'GIT',
-					'drush_alias' => 'site1.stage'
+					'repo_type' => 'GIT'
 				),
 				'prod' => array(
-					'url' => 'http://site1.prod/',
+					'url' => 'http://ec2-46-137-236-55.ap-southeast-1.compute.amazonaws.com/',
 					'repo' => 'https://git.prod/site1.git',
-					'repo_type' => 'GIT',
-					'drush_alias' => 'site1.prod'
+					'repo_type' => 'GIT'
 				)
 			)
 		)
 	),
-	
+
 	'commands' => array(
 		'db-refresh' =>	'drush -v -q sql-sync @{site}.{source} @{site}.{destination}',
-		'info' =>	'drush -v -q @{site} info',
-		'update' => 	'drush -v -q @{site} pull'
+		'info' =>	'drush -v -q @{site}.{destination} info',
+		'update' => 	'drush -v -q @{site}.{destination} pull'
 	)
 );
-	
-	
